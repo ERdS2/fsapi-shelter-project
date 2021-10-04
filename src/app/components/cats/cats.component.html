@@ -1,0 +1,22 @@
+<section class="pet-site">
+    <div class="header">
+        <p class="title">Macskák</p>
+    </div>
+    <div class="pet-wrapper">
+        <div class="pet-card" *ngFor="let pet of pets">
+            <div class="pet-img">
+                <img class="responsive" [src]="pet.image" [alt]="pet.name">
+            </div>
+            <div class="pet-details">
+                <h3>{{pet.name}}</h3>
+                <div class="pet-adopt-info">
+                    <h6>Ivar: {{pet.sex}}</h6>
+                    <h6>Kor: {{pet.age}}</h6>
+                    <h6>Szín: {{pet.color}}</h6>
+                    <p class="story">{{pet.story}}</p>
+                </div>
+                <button class="button" (click)="adoptThePet(pet)">Örökbefogadom ❤️</button>
+            </div>
+        </div>
+    </div>
+</section>

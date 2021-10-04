@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-7 d-none d-md-flex bg-image"></div>
+        <div class="col-md-4 bg-light">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 col-xl-6 form"></div>
+                        <h3 class="display-5">Regisztráció</h3> <br>
+                        <form [formGroup]="registerForm">
+                            <div class="form-group mb-3"> <input id="fullname" type="text" placeholder="Név"
+                                    formControlName="name" autofocus=""
+                                    class="form-control rounded-pill border-0 shadow-sm px-4">
+                                <small
+                                    *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].dirty"
+                                    class="text-danger">Helytelen név formátum</small>
+                            </div>
+                            <div class="form-group mb-3"> <input id="inputEmail" type="email" placeholder="Email cím"
+                                    autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4"
+                                    id="register-email" formControlName="email">
+                                <small class="text-danger "
+                                    *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].dirty">Helytelen
+                                    email-cím.</small>
+                                <small *ngIf="usedEmail === true">Ez az emailcím már foglalt!</small>
+
+                            </div>
+                            <div class="form-group mb-3"> <input id="register-password" type="password"
+                                    placeholder="Jelszó"
+                                    class="form-control rounded-pill border-0 shadow-sm px-4 text-danger"
+                                    id="register-password" formControlName="password">
+                                <small
+                                    *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].dirty"
+                                    class="text-danger">A jelszónak minimum 8 karakter hosszúnak kell lennie!</small>
+                            </div>
+                            <div class="form-group mb-3"> <input id="register-re-password" type="password"
+                                    placeholder="Jelszó megerősítése"
+                                    class="form-control rounded-pill border-0 shadow-sm px-4 text-danger"
+                                    id="register-re-password" formControlName="rePassword">
+                                <small *ngIf="passwordsAreMatch() && registerForm.controls['rePassword'].dirty"
+                                    class="text-danger">Nem egyező jelszavak</small>
+                            </div>
+                            <button [disabled]="registerForm.invalid || passwordsAreMatch()" type="submit" value="Register"
+                                class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                                (click)="saveUser()">Regisztráció
+                            </button>
+                            <div class="text-center d-flex justify-content-between mt-4 reg-div">
+                                <p><a href="/" class="font-italic text-muted"> <u>Bejelentkezés</u></a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

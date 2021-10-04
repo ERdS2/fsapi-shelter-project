@@ -1,0 +1,130 @@
+.header {
+    min-height: 20rem;
+    max-height: 20rem;
+    background-image: url("https://images.unsplash.com/photo-1515002246390-7bf7e8f87b54?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 3%;
+}
+.title {
+    padding: 15% 0 0 8%;
+    font-size: 4rem;
+}
+
+.pet-wrapper {
+    height: 100%;
+    margin: 0 auto;
+}
+/*---------------------------Kártyák---------------------------------*/
+.pet-card {
+    /* background-color: tomato; */
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 0 auto;
+}
+.pet-img {
+    /* background-color: teal; */
+}
+.pet-img img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 30px;
+}
+/*-------------------Állat infók------------------------*/
+.pet-details {
+    padding: 5% 0 0 5%;
+    min-height: 5rem;
+    margin-left: 1%;
+}
+.pet-details h4 {
+    padding-bottom: 2%;
+}
+.pet-details h6 {
+    padding-bottom: 2%;
+}
+.story {
+    min-height: 2rem;
+    max-width: 80%;
+    overflow-wrap: break-word;
+    /* background-color: yellow; */
+}
+.button {
+    border-radius: 30px;
+    width: 12rem;
+    height: 3rem;
+    color: white;
+    font-weight: bold;
+    background-color: teal;
+    margin-bottom: 2%;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .pet-wrapper {
+        width: 90%;
+    }
+
+    .title {
+        padding: 15% 0 0 5%;
+        font-size: 7rem;
+    }
+    /*---------------------------Kártyák---------------------------------*/
+    .pet-card {
+        display: grid;
+        grid-template-columns: 55% 45%;
+        height: 100%;
+    }
+    .pet-img {
+        padding-top: 2%;
+    }
+
+    /*-------------------Állat infók------------------------*/
+    .pet-details {
+        padding: 5% 0 0 5%;
+        height: 100%;
+    }
+    .pet-details h4 {
+        padding-bottom: 2%;
+    }
+    .story {
+        min-height: 2rem;
+        max-width: 95%;
+    }
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .title {
+        padding: 4% 0 0 12%;
+        font-size: 8rem;
+    }
+    /*---------------------------Kártyák---------------------------------*/
+    .pet-card {
+        display: grid;
+        grid-template-columns: 45% 55%;
+        height: 100%;
+        max-width: 1740px;
+    }
+    .pet-img {
+        padding-top: 2%;
+        height: 100%;
+        max-width: 782px;
+    }
+    .pet-img img{
+        
+    }
+
+    /*-------------------Állat infók------------------------*/
+    .pet-details {
+        padding: 5% 0 0 5%;
+        height: 100%;
+    }
+    .pet-details h4 {
+        padding-bottom: 2%;
+    }
+    .story {
+        min-height: 2rem;
+        max-width: 95%;
+    }
+}

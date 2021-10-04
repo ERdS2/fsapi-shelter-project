@@ -1,0 +1,74 @@
+<div class="container card-0 justify-content-center ">
+    <div class="card-body px-sm-4 px-0">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-10 col">
+                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Új állat feltöltése </h3>
+            </div>
+        </div>
+        <div class="row justify-content-center round">
+            <div class="col-lg-10 col-md-12 ">
+                <div class="card shadow-lg card-1">
+                    <div class="card-body inner-card">
+                        <form [formGroup]="petRegisterForm">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name">Név</label>
+                                        <input type="text" formControlName="name" class="form-control" id="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="age">Kor</label>
+                                        <input type="text" formControlName="age" class="form-control" id="age">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="breed">Faj</label>
+                                        <select formControlName="breed" class="form-control">
+                                            <option label=" "></option>
+                                            <option>Kutya</option>
+                                            <option>Macska</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="sex">Nem</label>
+                                        <select formControlName="sex" class="form-control">
+                                            <option label=" "></option>
+                                            <option>Kan/Kandúr</option>
+                                            <option>Nőstény</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="color">Szín</label>
+                                        <input type="text" formControlName="color" class="form-control" id="color">
+                                    </div>
+                                    <div class="form-group"> <label for="story">Leírás</label>
+                                        <textarea formControlName="story" class="form-control rounded-0" id="story"
+                                            rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 col-12">
+                                    <div class="form-group"><label class="image">Fénykép url megadása </label> <input
+                                            id="image" type="string" formControlName="image" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 col-12">
+
+                                    <div class="mb-2 mt-4">
+                                        <div class="text-right"><button (click)="savePet()" type="button"
+                                                class="btn btn-primary btn-block"><small
+                                                    class="font-weight-bold">Feltöltés</small></button> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

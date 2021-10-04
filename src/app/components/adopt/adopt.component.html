@@ -1,0 +1,50 @@
+<div class='container'>
+    <div class="card mx-auto col-md-5 col-8 mt-3 p-0">
+        <img class='mx-auto pic' [src]=pet.image />
+        <div class="card-title d-flex px-4">
+            <h3 class="item text-muted">
+                {{pet.name}}
+            </h3>
+        </div>
+        <div class="card-body">
+            <h6>Ivar: {{pet.sex}}</h6>
+            <h6>Kor: {{pet.age}}</h6>
+            <h6>Szín: {{pet.color}}</h6>
+            <p class="story">{{pet.story}}</p>
+        </div>
+        <div class="footer text-center p-0">
+            <div class="col-lg-12 col-12 p-0">
+                <p class="order"> <button (click)="adopt(pet)" [disabled]="disabled" routerLink="/landingPage">🐾Gazdi leszek!🐾</button> </p>
+            </div>
+        </div>
+        <small *ngIf="disabled === true">Fogadja el a tájékoztató alján lévő szerződési feltételeket!</small>
+    </div>
+    <div class="card mx-auto col-md-5 col-8 mt-3 p-0 second">
+        <div>
+            <p>KUTYÁINKAT ÉS CICÁINKAT <br>
+                ivartalanítva, oltva, chipelve, parazitamentesítve adjuk ki.</p>
+            <p> Kölyökkutya/kölyökmacska az oltási program befejezésére vonatkozó, valamint ivartalanítási
+                kötelezettséggel fogadható örökbe.
+                Az ivartalanítás megtörténtét az ivarérett kor betöltését követően ellenőrizzük. Az ivartalanítás
+                megtörténtéről szóló állatorvosi igazolás,
+                Illetve az oltási program befejezését igazoló oltási könyv bemutatásával nyilvánítjuk a kötelezettséget
+                teljesítettnek.</p>
+            <p> Fontos számunkra, hogy a tőlünk elköltözött állatainkat nyomon tudjuk követni, ezért a kezdeti időkben
+                gyakori visszajelzést kérünk az új
+                gazdiktól, a későbbiekben pedig ritkább bejelentkezéseknek is nagyon örülünk. Számunkra nincs nagyobb
+                öröm,
+                mint visszajelzést kapni arról,
+                hogy egy régi védencünk szerető otthonban él.</p>
+            <p>Menhelyünk fenntartja az állat környezetére vonatkozó
+                ellenőrzési jogot, a gazdával előre
+                egyeztetett időpontban. A tőlünk örökbe fogadott állatot továbbadni más magánszemélynek vagy más
+                menhelyre
+                beadni nem lehet. Az örökbefogadott
+                állatot bármikor visszavesszük, a gazda az örökbefogadási szerződésben kötelezettséget vállal arra hogy
+                csak
+                és kizárólag menhelyünkön adhatja le.</p>
+
+        </div>
+        <p> <input id="checkbox" type='checkbox' (click)='isChecked()'>Kijelentem, hogy elolvastam és elfogadom az Általános Szerződési Feltételeket.</p>
+    </div>
+</div>

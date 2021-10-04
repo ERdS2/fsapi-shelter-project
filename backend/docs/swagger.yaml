@@ -1,0 +1,346 @@
+openapi: 3.0.0
+
+info:
+  title: Animal Shelter
+  description: Project server documentation
+  version: "1.0"
+  
+  contact:
+    name: Tóth Viktória
+    email: viktoria778@gmail.com
+
+servers:
+  - url: http://localhost:3000
+    description: Main url for project
+    
+paths:
+  /login:
+    post:
+      summary: Login
+      tags:
+          - Login
+      requestBody:
+        description: This end point is responsible for login
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginSchema'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginResponseSchema'
+        '400':
+          description: error response 
+          content:
+            appication/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /logout:
+     post:
+      summary: Logout
+      tags:
+          - Logout
+      requestBody:
+        description: This end point is responsible for logout
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tokenSchema'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: error response
+        '500':
+          description: error response
+          content:
+            appication/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+  /refresh:
+    post:
+      summary: Refresh
+      tags:
+          - Refresh
+      requestBody:
+        description: This end point is responsible for refresh
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tokenSchema'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/refreshResponseSchema'
+        '401':
+          description: error response if there is no token
+        '403':
+          description: error response
+        '500':
+          description: error response
+          content:
+            appication/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /users:
+    post:
+      summary: registration.
+      tags:
+          - registration
+      requestBody:
+        description: This end point is responsible for Create a new user.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userSchema'
+      responses:
+        '201':
+          description: Uploaded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponseSchema'
+        '500':
+          description: error response
+          content:
+            appication/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+  /adoption:
+    post:
+      security:
+        - authenticate: []
+      summary: Upload a new adoption.
+      tags:
+          - Upload adoption
+      requestBody:
+        description: This end point is responsible for upload a new adoption
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/adoptSchema'
+      responses:
+        '201':
+          description: Uploaded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/adoptResponseSchema'
+        '500':
+          description: error response 
+          content:
+            appication/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+  /pets:
+    post:
+      security:
+        - authenticate: []
+      summary: Upload a new animal.
+      tags:
+          - Upload animal
+      requestBody:
+        description: This end point is responsible for upload a new animal
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/petSchema'
+      responses:
+        '201':
+          description: Uploaded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/petSchema'
+        '500':
+          description: error response
+          content:
+            appication/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+  /pets/{category}:
+    get:
+      summary: Return adoptable animals
+      description: This end pont responsible for listing animals
+      tags:
+      - Getting animal list
+      parameters:
+        - name: category
+          in: path
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: get list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/petSchema'
+            plain/text:
+              schema:
+                type: string
+        '500':
+          description: error response
+          content:
+            appication/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+components:
+  schemas:
+  
+    Error:
+      properties:
+        errorMessage:
+          type: string
+          
+    petSchema:
+      required:
+        - name
+        - age
+        - sex
+        - breed
+        - color
+        - story
+        - image
+      properties:
+          _id:
+            type: string
+          name:
+            type: string
+          age:
+            type: string
+          sex:
+            type: string
+          breed:
+            type: string   
+          color:
+            type: string
+          story:
+            type: string    
+          available:
+            type: boolean
+          image:
+            type: string
+            
+    tokenSchema:
+      required:
+        - token
+      properties:
+        token:
+          type: string
+
+    loginSchema:
+      required:
+        - inputEmail
+        - inputPassword
+      properties:
+        inputEmail:
+          type: string
+        inputPassword:
+          type: string
+          
+    refreshResponseSchema:
+      required:
+        - accessToken
+        - userData
+      properties:
+        accessToken:
+          type: string
+        userData:
+          type: object
+          
+    loginResponseSchema:
+      required:
+        - accessToken
+        - refreshToken
+        - email
+        - _id
+        - role
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+        email:
+          type: string
+        role: 
+          type: string
+        _id: 
+          type: string
+      
+    userSchema:
+      required: 
+        - name
+        - email
+        - password
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+        password:
+          type: string
+          
+    userResponseSchema:
+      required: 
+        - name
+        - email
+        - role
+      properties:
+        _id:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+          
+    adoptResponseSchema:
+      required:
+        - user_id
+        - pet_id
+      properties:
+        pet_id:
+          type: number
+        user_id:
+          type: number
+    
+    adoptSchema:
+      required:
+        - _id
+      properties:
+        _id:
+          type: string
+
+
+  securitySchemes:
+    authenticate:            
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

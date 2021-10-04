@@ -1,0 +1,8 @@
+{
+    "testDatabase":{
+        "dbType":"mongodb+srv://",
+        "username":" ",
+        "password":" ",
+        "host":" "
+    }
+}
